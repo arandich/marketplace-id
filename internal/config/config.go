@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/creasty/defaults"
 	"github.com/joho/godotenv"
+	"github.com/rs/zerolog/log"
 	"github.com/sethvargo/go-envconfig"
 )
 
@@ -19,7 +20,7 @@ type Config struct {
 func New(ctx context.Context, cfg interface{}) error {
 	err := godotenv.Load()
 	if err != nil {
-		return err
+		log.Warn().Err(err).Msg("Error loading .env file")
 	}
 
 	err = envconfig.Process(ctx, cfg)

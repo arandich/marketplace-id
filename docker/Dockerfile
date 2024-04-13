@@ -1,14 +1,21 @@
 FROM golang:1.22 as builder
 
-RUN mkdir "marketplace-id"
+WORKDIR /app
 
+COPY go.mod .
+COPY go.sum .
 
-COPY . ./marketplace-id
+RUN go mod download
 
-WORKDIR ./marketplace-id
+COPY . .
 
-ENV GOPRIVATE=*
-ENV GOINSECURE=*
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./server ./cmd/server
 
-RUN go build -o ./server ./cmd/server && chmod +x ./cmd
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /app
+
+COPY --from=builder /app/server .
+
 CMD ["./server"]
