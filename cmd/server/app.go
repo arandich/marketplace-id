@@ -54,9 +54,10 @@ func runApp(ctx context.Context, cfg config.Config) {
 	}
 	defer pgPool.Close()
 
-	//clients := model.Clients{}
+	clients := model.Clients{}
+
 	services := model.Services{
-		IdService: service.NewIdService(repository.NewIdRepository(ctx, pgPool, promMetrics, cfg)),
+		IdService: service.NewIdService(repository.NewIdRepository(ctx, pgPool, promMetrics, cfg, clients)),
 	}
 	// GRPC.
 	grpcTrSrv := grpcTransport.New(ctx, cfg.GRPC)

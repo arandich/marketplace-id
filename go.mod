@@ -3,7 +3,7 @@ module github.com/arandich/marketplace-id
 go 1.22.1
 
 require (
-	github.com/arandich/marketplace-proto v0.0.0-20240413161913-44c27d4397c2
+	github.com/arandich/marketplace-proto v0.0.0-20240413192952-523246342a57
 	github.com/arandich/marketplace-sdk v0.0.0-20240413145105-19d14b4409f7
 	github.com/creasty/defaults v1.7.0
 	github.com/jackc/pgx/v5 v5.5.5
