@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:15.4-alpine3.18
+    container_name: postgres
+    restart: always
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U habrpguser -d habrdb' ]
+      interval: 10s
+      timeout: 30s
+      retries: 10
+    volumes:
+      - 'postgres_storage:/var/lib/postgresql/data'
+    ports:
+      - '127.0.0.1:5432:5432'
+    env_file:
+      - './postgres.env'
+  marketplace-id:
+    container_name: marketplace-id
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - '0.0.0.0:7171:7171'
+    env_file:
+      - './service.env'
+# Volumes.
+volumes:
+  postgres_storage:
+    driver: local
+
+# Networks.
+networks:
+  marketplace_network:
+    external: true
