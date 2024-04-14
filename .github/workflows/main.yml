@@ -14,7 +14,7 @@ jobs:
 
       - name: SSH and update code
         run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST}} "cd /marketplace/${{ github.repository }} && git pull"
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST}} "cd /marketplace/${{ secrets.repository }} && git pull"
 
       - name: Create Docker network if not exists
         run: docker network create marketplace_network || true
@@ -26,10 +26,10 @@ jobs:
         run: docker-compose -f /docker-compose.yml up -d migrator
 
       - name: Build Docker container
-        run: docker-compose -f /docker-compose.yml -d ${{ github.repository }} build
+        run: docker-compose -f /docker-compose.yml -d ${{ secrets.repository }} build
 
       - name: Run specific service from docker-compose
-        run: docker-compose -f /docker-compose.yml up -d ${{ github.repository }}
+        run: docker-compose -f /docker-compose.yml up -d ${{ secrets.repository }}
 
       - name: Clean up unused data
         run: docker system prune -a -f
