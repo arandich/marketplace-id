@@ -16,6 +16,12 @@ jobs:
         run: |
           sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST}} "cd /marketplace/${{ github.repository }} && git pull"
 
+      - name: Build migrator
+        run: docker-compose -f /docker-compose.yml -d migrator build
+
+      - name: Run specific service from docker-compose
+        run: docker-compose -f /docker-compose.yml up -d migrator
+
       - name: Build Docker container
         run: docker-compose -f /docker-compose.yml -d ${{ github.repository }} build
 
