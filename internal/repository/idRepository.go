@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/arandich/marketplace-id/internal/config"
 	"github.com/arandich/marketplace-id/internal/model"
+	"github.com/arandich/marketplace-id/internal/storage"
 	"github.com/arandich/marketplace-id/pkg/metrics"
 	pb "github.com/arandich/marketplace-proto/api/proto/services"
 	"github.com/arandich/marketplace-proto/api/proto/types"
@@ -29,17 +30,16 @@ type IdRepository struct {
 	logger      *zerolog.Logger
 	cfg         config.Config
 	clients     model.Clients
-	queries     *scripts.Queries
+	queries     storage.Storage
 }
 
-func NewIdRepository(ctx context.Context, pgPool *pgxpool.Pool, promMetrics metrics.Metrics, cfg config.Config, clients model.Clients) *IdRepository {
+func NewIdRepository(ctx context.Context, storage storage.Storage, promMetrics metrics.Metrics, cfg config.Config, clients model.Clients) *IdRepository {
 	return &IdRepository{
-		pgPool:      pgPool,
 		promMetrics: promMetrics,
 		logger:      zerolog.Ctx(ctx),
 		cfg:         cfg,
 		clients:     clients,
-		queries:     scripts.New(pgPool),
+		queries:     storage,
 	}
 }
 
@@ -86,12 +86,12 @@ func (i IdRepository) InitHold(ctx context.Context, req *pb.InitHoldRequest) (*p
 func (i IdRepository) GetUser(ctx context.Context, req *emptypb.Empty) (*pb.GetUserResponse, error) {
 	jwtToken := metadata.ValueFromIncomingContext(ctx, "authorization")
 	if len(jwtToken) == 0 {
-		return &pb.GetUserResponse{}, errors.New("jwt token is empty")
+		return nil, errors.New("jwt token is empty")
 	}
 
 	claims, err := sdkJwt.ValidateJWTToken(ctx, jwtToken[0])
 	if err != nil {
-		return &pb.GetUserResponse{}, err
+		return nil, err
 	}
 
 	user, err := i.queries.GetUser(ctx, claims.UserID)
