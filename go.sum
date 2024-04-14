@@ -4,8 +4,8 @@ github.com/Microsoft/go-winio v0.6.1 h1:9/kr64B9VUZrLm5YYwbGtUJnMgqWVOdUAXu6Migc
 github.com/Microsoft/go-winio v0.6.1/go.mod h1:LRdKpFKfdobln8UmuiYcKPot9D2v6svN5+sAH+4kjUM=
 github.com/arandich/marketplace-proto v0.0.0-20240414151403-c4ec388253d4 h1:22kvid2/0UaMB2/rEFq4Ogr9ed2sKPOiw2n7a/zpeIo=
 github.com/arandich/marketplace-proto v0.0.0-20240414151403-c4ec388253d4/go.mod h1:Vv9GK6Dj4vVLt4Qe105CRRrEZKjEoFcPDCpgTR69llU=
-github.com/arandich/marketplace-sdk v0.0.0-20240414165521-dec9cfd3293a h1:OwAb+OAaE5Jsg5EjWSkEBtubYm02GT0Sl8HuibQOVZo=
-github.com/arandich/marketplace-sdk v0.0.0-20240414165521-dec9cfd3293a/go.mod h1:cH8n7yt2P/rfyKZXz2Hm7aC1TsA771I+/2yBrutpav8=
+github.com/arandich/marketplace-sdk v0.0.0-20240414183437-a1af24d30efc h1:3JlBDy9SBuOaSrlJ0e+bUcTZCFqdOGAkSfHJRr2dTio=
+github.com/arandich/marketplace-sdk v0.0.0-20240414183437-a1af24d30efc/go.mod h1:LGDB9eX/h7kWgU/yvmXsVoOTbE36sJBFeNc3jKa53Fo=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
@@ -102,8 +102,6 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.8.3 h1:RP3t2pwF7cMEbC1dqtB6poj3niw/9gnV4Cjg5oW5gtY=
 github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
-gitlab.com/0xscore/degen-sdk v0.0.0-20240409095255-9c2abaa54cf3 h1:SMoF7DE29RcIVl5b+1ZYJYH/zxUh2Kos+oXkZCjZcBo=
-gitlab.com/0xscore/degen-sdk v0.0.0-20240409095255-9c2abaa54cf3/go.mod h1:gURduhUBwKWqzqZGqOgUTJbdcKwzWq9ALN3nX/FWgKc=
 go.uber.org/atomic v1.7.0 h1:ADUqmZGgLDDfbSL9ZmPxKTybcoEYHgpYfELNoN+7hsw=
 go.uber.org/atomic v1.7.0/go.mod h1:fEN4uk6kAWBTFdckzkM89CLk9XfWZrxpCo0nPH17wJc=
 golang.org/x/crypto v0.22.0 h1:g1v0xeRhjcugydODzvb3mEM9SQ0HGp9s/nh3COQ/C30=
