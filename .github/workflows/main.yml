@@ -24,4 +24,4 @@ jobs:
             docker network create marketplace_network || true
             docker compose -p ${{ secrets.repository }} up -d --no-deps --build migrator
             docker compose -p ${{ secrets.repository }} up -d --no-deps --build ${{ secrets.repository }}
-            docker system prune -a -f
+            docker image prune -f
