@@ -4,7 +4,7 @@ go 1.22.1
 
 require (
 	github.com/arandich/marketplace-proto v0.0.0-20240414151403-c4ec388253d4
-	github.com/arandich/marketplace-sdk v0.0.0-20240414165521-dec9cfd3293a
+	github.com/arandich/marketplace-sdk v0.0.0-20240414183437-a1af24d30efc
 	github.com/creasty/defaults v1.7.0
 	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/golang-migrate/migrate/v4 v4.17.0
@@ -38,13 +38,13 @@ require (
 	github.com/prometheus/client_model v0.6.1 // indirect
 	github.com/prometheus/common v0.52.2 // indirect
 	github.com/prometheus/procfs v0.13.0 // indirect
-	gitlab.com/0xscore/degen-sdk v0.0.0-20240409095255-9c2abaa54cf3 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/net v0.24.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/tools v0.20.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240412170617-26222e5d3d56 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240401170217-c3f982113cda // indirect
 )
