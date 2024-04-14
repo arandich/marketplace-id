@@ -14,6 +14,7 @@ type Config struct {
 	HTTP       HttpConfig       `yaml:"HTTP" env:",prefix=HTTP_"`
 	GRPC       GrpcConfig       `yaml:"GRPC" env:",prefix=GRPC_"`
 	Logger     LoggerConfig     `yaml:"logger" env:",prefix=LOG_"`
+	JWT        JWTConfig        `yaml:"jwt" env:",prefix=JWT_"`
 	Postgres   PostgresConfig   `yaml:"postgres" env:",prefix=POSTGRES_"`
 }
 
