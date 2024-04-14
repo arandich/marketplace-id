@@ -8,6 +8,7 @@ import (
 	"github.com/arandich/marketplace-id/internal/service"
 	grpcTransport "github.com/arandich/marketplace-id/internal/transport/grpc"
 	"github.com/arandich/marketplace-id/internal/transport/http"
+	scripts "github.com/arandich/marketplace-sdk/database-scripts/generated/postgres/marketplace-id"
 	"github.com/rs/zerolog"
 	"os"
 	"os/signal"
@@ -57,7 +58,7 @@ func runApp(ctx context.Context, cfg config.Config) {
 	clients := model.Clients{}
 
 	services := model.Services{
-		IdService: service.NewIdService(repository.NewIdRepository(ctx, pgPool, promMetrics, cfg, clients)),
+		IdService: service.NewIdService(repository.NewIdRepository(ctx, scripts.New(pgPool), promMetrics, cfg, clients)),
 	}
 	// GRPC.
 	grpcTrSrv := grpcTransport.New(ctx, cfg.GRPC)
