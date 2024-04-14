@@ -10,6 +10,7 @@ type IdRepository interface {
 	Auth(ctx context.Context, req *pb.AuthRequest) (*pb.AuthResponse, error)
 	InitHold(ctx context.Context, req *pb.InitHoldRequest) (*pb.InitHoldResponse, error)
 	GetUser(ctx context.Context, req *emptypb.Empty) (*pb.GetUserResponse, error)
+	RegisterUser(ctx context.Context, req *pb.RegisterUserRequest) (*pb.RegisterUserResponse, error)
 }
 
 var _ IdRepository = (*IdService)(nil)
@@ -35,4 +36,8 @@ func (s IdService) InitHold(ctx context.Context, req *pb.InitHoldRequest) (*pb.I
 
 func (s IdService) GetUser(ctx context.Context, req *emptypb.Empty) (*pb.GetUserResponse, error) {
 	return s.repository.GetUser(ctx, req)
+}
+
+func (s IdService) RegisterUser(ctx context.Context, req *pb.RegisterUserRequest) (*pb.RegisterUserResponse, error) {
+	return s.repository.RegisterUser(ctx, req)
 }

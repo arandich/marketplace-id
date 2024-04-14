@@ -40,7 +40,9 @@ func (i IdRepository) InitHold(ctx context.Context, req *pb.InitHoldRequest) (*p
 }
 
 func (i IdRepository) GetUser(ctx context.Context, req *emptypb.Empty) (*pb.GetUserResponse, error) {
-	return &pb.GetUserResponse{
-		UserId: "test",
-	}, nil
+	return &pb.GetUserResponse{}, nil
+}
+
+func (i IdRepository) RegisterUser(ctx context.Context, req *pb.RegisterUserRequest) (*pb.RegisterUserResponse, error) {
+	return &pb.RegisterUserResponse{}, nil
 }
