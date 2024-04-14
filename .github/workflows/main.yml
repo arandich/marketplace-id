@@ -16,6 +16,9 @@ jobs:
         run: |
           sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USER }}@${{ secrets.HOST}} "cd /marketplace/${{ github.repository }} && git pull"
 
+      - name: Create Docker network if not exists
+        run: docker network create marketplace_network || true
+
       - name: Build migrator
         run: docker-compose -f /docker-compose.yml -d migrator build
 
