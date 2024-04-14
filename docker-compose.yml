@@ -18,6 +18,16 @@ services:
       - './postgres.env'
     networks:
       - postgres_network
+  migrator:
+    container_name: migrator
+    restart: no
+    build:
+      context: .
+      dockerfile: ./migrator/Dockerfile
+    env_file:
+      - './service.env'
+    networks:
+      - postgres_network
   marketplace-id:
     container_name: marketplace-id
     restart: always
