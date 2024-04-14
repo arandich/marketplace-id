@@ -18,6 +18,7 @@ RUN apk --no-cache add ca-certificates
 
 WORKDIR /app
 
+COPY ./migrator/migrations ./migrator/migrations
 COPY --from=builder /app/server .
 
 CMD ["./server"]
